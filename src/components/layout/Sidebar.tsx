@@ -20,7 +20,7 @@ type NavItemDividerType = { divider: true }
 type SubItem = {
   label: string
   href: string
-  badge?: number | React.ReactNode
+  badge?: number | React.ReactNode | ((counts: Record<string, number>) => number | React.ReactNode)
 }
 
 type NavItemType = {

@@ -81,7 +81,7 @@ export default async function VaccinationsPage(props: {
     : records
 
   if (query) {
-    filtered = filtered.filter(r => 
+    filtered = filtered.filter((r: any) => 
       `${r.residents?.first_name} ${r.residents?.last_name}`.toLowerCase().includes(query) ||
       (r.vaccine_name && r.vaccine_name.toLowerCase().includes(query))
     )

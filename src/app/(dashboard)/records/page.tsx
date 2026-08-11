@@ -94,7 +94,7 @@ export default async function HealthRecordsPage(props: {
     : records.filter((r) => r.risk_level === (activeTab.charAt(0).toUpperCase() + activeTab.slice(1)))
 
   if (query) {
-    filtered = filtered.filter(r => 
+    filtered = filtered.filter((r: any) => 
       `${r.residents?.first_name} ${r.residents?.last_name}`.toLowerCase().includes(query) ||
       (r.chief_complaint && r.chief_complaint.toLowerCase().includes(query)) ||
       (r.diagnosis && r.diagnosis.toLowerCase().includes(query))

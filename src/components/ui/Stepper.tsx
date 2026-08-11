@@ -84,7 +84,7 @@ export default function Stepper({
                     step={stepNumber}
                     disableStepIndicators={disableStepIndicators}
                     currentStep={currentStep}
-                    onClickStep={(clicked) => {
+                    onClickStep={(clicked: number) => {
                       updateStep(clicked);
                     }}
                   />
