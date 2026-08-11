@@ -6,9 +6,14 @@ export async function middleware(request: NextRequest) {
 
   // Refresh session if expired - required for Server Components
   // https://supabase.com/docs/guides/auth/server-side/nextjs
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user = null;
+  try {
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  } catch (error) {
+    // If Supabase fetch fails (e.g. invalid URL due to missing env variables)
+    console.error("Supabase auth error:", error);
+  }
 
   // Protect all routes except /login and static assets
   const isLoginPage = request.nextUrl.pathname.startsWith("/login");
